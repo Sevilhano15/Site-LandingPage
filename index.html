@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Cursos profissionalizantes, de Informática e Gestão Empresarial. Acelere sua carreira com formações práticas, certificação e apoio à empregabilidade." />
+    <title>Instituto Pro Futuro — Cursos Profissionalizantes, Informática e Gestão</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --bg: #0b1020;
+        --card: #121833;
+        --muted: #9aa4c7;
+        --text: #e8ecff;
+        --brand: #5b8cff;
+        --brand-2: #7cf7d4;
+        --accent: #ffd166;
+        --danger: #ff6b6b;
+        --success: #2ecc71;
+        --shadow: 0 10px 30px rgba(0,0,0,0.25);
+        --radius: 14px;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial;
+        background: radial-gradient(1200px 600px at 80% -10%, rgba(124, 247, 212, 0.06), transparent),
+                    radial-gradient(1200px 600px at 10% 10%, rgba(91, 140, 255, 0.08), transparent),
+                    var(--bg);
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; display: block; }
+
+      /* Layout */
+      .container { width: min(1200px, 92%); margin: 0 auto; }
+
+      /* Header */
+      header {
+        position: sticky; top: 0; z-index: 100;
+        backdrop-filter: saturate(140%) blur(6px);
+        background: rgba(11, 16, 32, 0.6);
+        border-bottom: 1px solid rgba(154, 164, 199, 0.1);
+      }
+      .nav {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 14px 0;
+      }
+      .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.2px; }
+      .logo {
+        width: 36px; height: 36px; border-radius: 9px;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        box-shadow: 0 6px 18px rgba(91, 140, 255, .35);
+      }
+      .menu { display: flex; gap: 18px; align-items: center; }
+      .menu a { color: var(--muted); font-weight: 500; font-size: 0.95rem; }
+      .menu a:hover { color: var(--text); }
+      .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; cursor: pointer; font-weight: 600; }
+      .btn.primary {
+        padding: 10px 16px; border-radius: 10px; color: #0b1020;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        box-shadow: 0 10px 24px rgba(91, 140, 255, .3);
+      }
+      .btn.primary:hover { transform: translateY(-1px); filter: brightness(1.03); }
+
+      /* Hero */
+      .hero { padding: 72px 0 32px; }
+      .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 36px; align-items: center; }
+      .kicker { color: var(--brand-2); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-size: 0.85rem; }
+      h1 { font-size: clamp(1.9rem, 3.5vw + 1rem, 3.2rem); line-height: 1.1; margin: 10px 0 14px; }
+      .lead { color: var(--muted); font-size: clamp(1rem, 1.2vw + .6rem, 1.15rem); margin-bottom: 22px; }
+      .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+      .btn.ghost { padding: 10px 16px; border-radius: 10px; color: var(--text); border: 1px solid rgba(154, 164, 199, 0.25); background: rgba(18, 24, 51, 0.4); }
+      .btn.ghost:hover { border-color: rgba(124, 247, 212, 0.6); }
+      .hero-card {
+        background: linear-gradient(180deg, rgba(18, 24, 51, 0.8), rgba(18, 24, 51, 0.6));
+        border: 1px solid rgba(154, 164, 199, 0.15);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 22px;
+      }
+      .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 18px; }
+      .stat { background: rgba(11, 16, 32, 0.5); border: 1px solid rgba(154, 164, 199, 0.12); border-radius: 12px; padding: 14px; text-align: center; }
+      .stat b { font-size: 1.2rem; color: var(--brand-2); }
+      .stat span { display: block; color: var(--muted); font-size: 0.9rem; }
+
+      /* Sections */
+      section { padding: 56px 0; }
+      .section-title { font-size: clamp(1.4rem, 2.2vw + .6rem, 2rem); margin: 0 0 8px; }
+      .section-desc { color: var(--muted); margin-bottom: 28px; }
+
+      /* Cursos */
+      .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      .course {
+        background: linear-gradient(180deg, rgba(18, 24, 51, 0.8), rgba(18, 24, 51, 0.6));
+        border: 1px solid rgba(154, 164, 199, 0.12);
+        border-radius: 14px; padding: 18px; position: relative; overflow: hidden;
+      }
+      .course .badge { position: absolute; top: 14px; right: 14px; font-size: 0.8rem; color: #0b1020; background: var(--accent); padding: 6px 10px; border-radius: 999px; font-weight: 700; }
+      .course h3 { margin: 6px 0 8px; font-size: 1.2rem; }
+      .course p { margin: 0 0 10px; color: var(--muted); font-size: 0.95rem; }
+      .course ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.95rem; }
+      .course .cta { margin-top: 12px; display: flex; gap: 10px; }
+      .pill { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; padding: 8px 10px; border-radius: 999px; background: rgba(124, 247, 212, 0.12); border: 1px solid rgba(124, 247, 212, 0.32); color: var(--brand-2); }
+
+      /* Benefícios */
+      .benefits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      .benefit { background: rgba(18, 24, 51, 0.5); border: 1px solid rgba(154, 164, 199, 0.12); border-radius: 14px; padding: 18px; }
+      .benefit h4 { margin: 6px 0 6px; }
+      .benefit p { margin: 0; color: var(--muted); }
+
+      /* Depoimentos */
+      .testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      .testimonial { background: rgba(18,24,51,0.5); border: 1px solid rgba(154,164,199,0.12); border-radius: 14px; padding: 18px; }
+      .stars { color: #ffd166; margin-bottom: 8px; }
+      .author { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+      .avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #444, #777); }
+      .author small { color: var(--muted); }
+
+      /* Contato */
+      .contact {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+        background: linear-gradient(180deg, rgba(18, 24, 51, 0.7), rgba(18, 24, 51, 0.5));
+        border: 1px solid rgba(154, 164, 199, 0.12);
+        border-radius: 16px; padding: 24px;
+      }
+      form { display: grid; gap: 12px; }
+      label { font-weight: 600; font-size: 0.95rem; }
+      input, select, textarea {
+        width: 100%; padding: 12px 14px; border-radius: 10px;
+        border: 1px solid rgba(154, 164, 199, 0.2);
+        background: rgba(11, 16, 32, 0.6); color: var(--text);
+      }
+      input::placeholder, textarea::placeholder { color: #8e97b8; }
+      .legal { font-size: 0.85rem; color: var(--muted); }
+
+      /* Footer */
+      footer { padding: 36px 0; color: var(--muted); border-top: 1px solid rgba(154, 164, 199, 0.1); margin-top: 48px; }
+      .foot { display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; }
+      .foot .social { display: flex; gap: 10px; }
+      .chip { padding: 8px 10px; border-radius: 999px; border: 1px solid rgba(154,164,199,.2); }
+
+      /* Responsive */
+      @media (max-width: 960px) {
+        .hero-grid { grid-template-columns: 1fr; }
+        .courses-grid, .benefits, .testimonials { grid-template-columns: 1fr 1fr; }
+        .contact { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 640px) {
+        .menu a { display: none; }
+        .courses-grid, .benefits, .testimonials { grid-template-columns: 1fr; }
+        .hero { padding-top: 48px; }
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Redireciona automaticamente para a versão em pastas
+      window.location.replace('./HTML/index.html');
+    </script>
+    <noscript>Redirecionando para HTML/index.html…</noscript>
+    <!-- Header -->
+    <header aria-label="Barra de navegação principal">
+      <div class="container nav">
+        <a class="brand" href="#top" aria-label="Página inicial Instituto Pro Futuro">
+          <span class="logo" aria-hidden="true"></span>
+          Instituto Pro Futuro
+        </a>
+        <nav class="menu" aria-label="Navegação">
+          <a href="#cursos" target="_blank" rel="noopener">Cursos</a>
+          <a href="#beneficios" target="_blank" rel="noopener">Benefícios</a>
+          <a href="#depoimentos" target="_blank" rel="noopener">Depoimentos</a>
+          <a href="#contato" target="_blank" rel="noopener">Contato</a>
+          <a class="btn primary" href="#contato" target="_blank" rel="noopener">Quero me inscrever</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <main id="top" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="kicker">Cursos Profissionalizantes</div>
+          <h1>Acelere sua carreira com formações práticas e certificação reconhecida</h1>
+          <p class="lead">Aprenda do zero ao avançado em Tecnologia e Gestão Empresarial. Aulas dinâmicas, projetos reais, mentoria e apoio à empregabilidade.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#cursos">Ver cursos</a>
+            <a class="btn ghost" href="#contato">Fale com um consultor</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat"><b>+8.000</b><span>Alunos formados</span></div>
+            <div class="stat"><b>92%</b><span>Empregabilidade</span></div>
+            <div class="stat"><b>+120</b><span>Parcerias com empresas</span></div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Destaques">
+          <div class="pill" aria-label="Garantia de qualidade">
+            <span aria-hidden="true">✓</span>
+            Certificação reconhecida
+          </div>
+          <p style="margin:12px 0 0; color: var(--muted)">Planos acessíveis, turmas presenciais e online ao vivo, material atualizado e suporte individual.</p>
+          <ul style="margin:12px 0 0; padding-left:18px; color: var(--muted)">
+            <li>Trilhas de Informática e Gestão</li>
+            <li>Projetos práticos e portfólio</li>
+            <li>Orientação de carreira e entrevistas</li>
+          </ul>
+        </aside>
+      </div>
+    </main>
+
+    <!-- Cursos -->
+    <section id="cursos" aria-labelledby="titulo-cursos">
+      <div class="container">
+        <h2 id="titulo-cursos" class="section-title">Nossos cursos</h2>
+        <p class="section-desc">Escolha a trilha ideal para o seu momento: da iniciação em Informática até formações completas em Gestão Empresarial.</p>
+        <div class="courses-grid">
+          <article class="course" aria-label="Curso Pacote Office Essencial">
+            <span class="badge">Iniciante</span>
+            <h3>Pacote Office Essencial</h3>
+            <p>Domine Word, Excel e PowerPoint para o dia a dia profissional.</p>
+            <ul>
+              <li>Ferramentas mais usadas pelas empresas</li>
+              <li>Atividades práticas guiadas</li>
+              <li>Certificado de conclusão</li>
+            </ul>
+            <div class="cta">
+              <a class="btn primary" href="#contato">Inscrever-se</a>
+              <span class="pill">Carga horária: 40h</span>
+            </div>
+          </article>
+
+          <article class="course" aria-label="Curso Excel para Negócios">
+            <span class="badge">Popular</span>
+            <h3>Excel para Negócios</h3>
+            <p>Planilhas inteligentes, dashboards e automação com fórmulas.</p>
+            <ul>
+              <li>Tabelas dinâmicas e gráficos</li>
+              <li>KPIs e métricas de gestão</li>
+              <li>Modelos prontos para uso</li>
+            </ul>
+            <div class="cta">
+              <a class="btn primary" href="#contato">Inscrever-se</a>
+              <span class="pill">Carga horária: 50h</span>
+            </div>
+          </article>
+
+          <article class="course" aria-label="Curso Informática Profissional">
+            <span class="badge">Completo</span>
+            <h3>Informática Profissional</h3>
+            <p>Do básico ao avançado: sistemas, internet, produtividade e segurança.</p>
+            <ul>
+              <li>Windows, Google Workspace, segurança</li>
+              <li>Atalhos e boas práticas</li>
+              <li>Suporte técnico básico</li>
+            </ul>
+            <div class="cta">
+              <a class="btn primary" href="#contato">Inscrever-se</a>
+              <span class="pill">Carga horária: 60h</span>
+            </div>
+          </article>
+
+          <article class="course" aria-label="Curso Assistente Administrativo">
+            <span class="badge">Carreira</span>
+            <h3>Assistente Administrativo</h3>
+            <p>Rotinas de escritório, atendimento e organização de processos.</p>
+            <ul>
+              <li>Documentação, agenda e relatórios</li>
+              <li>Comunicação profissional</li>
+              <li>Gestão do tempo</li>
+            </ul>
+            <div class="cta">
+              <a class="btn primary" href="#contato">Inscrever-se</a>
+              <span class="pill">Carga horária: 80h</span>
+            </div>
+          </article>
+
+          <article class="course" aria-label="Curso Gestão Empresarial">
+            <span class="badge">Gestão</span>
+            <h3>Gestão Empresarial</h3>
+            <p>Planejamento, processos, pessoas e finanças para pequenos negócios.</p>
+            <ul>
+              <li>Processos e melhoria contínua</li>
+              <li>Liderança e performance</li>
+              <li>Formação de preço e fluxo de caixa</li>
+            </ul>
+            <div class="cta">
+              <a class="btn primary" href="#contato">Inscrever-se</a>
+              <span class="pill">Carga horária: 90h</span>
+            </div>
+          </article>
+
+          <article class="course" aria-label="Curso Atendimento e Vendas">
+            <span class="badge">Comercial</span>
+            <h3>Atendimento e Vendas</h3>
+            <p>Experiência do cliente, pitch de vendas e negociação eficaz.</p>
+            <ul>
+              <li>Técnicas de persuasão</li>
+              <li>CRM e funil de vendas</li>
+              <li>Pós-venda e fidelização</li>
+            </ul>
+            <div class="cta">
+              <a class="btn primary" href="#contato">Inscrever-se</a>
+              <span class="pill">Carga horária: 60h</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section id="beneficios" aria-labelledby="titulo-beneficios">
+      <div class="container">
+        <h2 id="titulo-beneficios" class="section-title">Por que estudar com a gente?</h2>
+        <p class="section-desc">Conteúdo atualizado, professores atuantes no mercado e trilhas pensadas para acelerar sua contratação.</p>
+        <div class="benefits">
+          <div class="benefit">
+            <h4>Metodologia prática</h4>
+            <p>Aprenda fazendo: exercícios, estudos de caso e projetos reais.</p>
+          </div>
+          <div class="benefit">
+            <h4>Mentoria e carreira</h4>
+            <p>Suporte para currículo, LinkedIn e simulações de entrevista.</p>
+          </div>
+          <div class="benefit">
+            <h4>Certificação reconhecida</h4>
+            <p>Comprove suas habilidades e destaque-se nos processos seletivos.</p>
+          </div>
+          <div class="benefit">
+            <h4>Flexibilidade</h4>
+            <p>Turmas presenciais e online ao vivo, com gravações para revisão.</p>
+          </div>
+          <div class="benefit">
+            <h4>Comunidade</h4>
+            <p>Networking com alunos, ex-alunos e empresas parceiras.</p>
+          </div>
+          <div class="benefit">
+            <h4>Investimento acessível</h4>
+            <p>Planos e bolsas para facilitar sua entrada no mercado.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="depoimentos" aria-labelledby="titulo-depoimentos">
+      <div class="container">
+        <h2 id="titulo-depoimentos" class="section-title">Histórias de sucesso</h2>
+        <p class="section-desc">Veja como nossos alunos transformaram suas carreiras com nossos cursos.</p>
+        <div class="testimonials">
+          <blockquote class="testimonial">
+            <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+            “Consegui meu primeiro emprego administrativo após o curso de Excel e Gestão. As mentorias foram essenciais!”
+            <div class="author">
+              <span class="avatar" aria-hidden="true"></span>
+              <div>
+                <b>Mariana Souza</b>
+                <small>Assistente Administrativa</small>
+              </div>
+            </div>
+          </blockquote>
+          <blockquote class="testimonial">
+            <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+            “A trilha de Informática Profissional me deu segurança para voltar ao mercado. Conteúdo atual e professores excelentes!”
+            <div class="author">
+              <span class="avatar" aria-hidden="true"></span>
+              <div>
+                <b>João Lima</b>
+                <small>Suporte Técnico Júnior</small>
+              </div>
+            </div>
+          </blockquote>
+          <blockquote class="testimonial">
+            <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+            “Aprendi a estruturar processos e liderar melhor minha equipe. O curso de Gestão foi um divisor de águas.”
+            <div class="author">
+              <span class="avatar" aria-hidden="true"></span>
+              <div>
+                <b>Renato Alves</b>
+                <small>Coordenador de Operações</small>
+              </div>
+            </div>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato / CTA -->
+    <section id="contato" aria-labelledby="titulo-contato">
+      <div class="container">
+        <h2 id="titulo-contato" class="section-title">Fale com um consultor</h2>
+        <p class="section-desc">Preencha seus dados e receba o plano ideal para seu objetivo profissional.</p>
+        <div class="contact" role="region" aria-label="Formulário de contato e informações">
+          <form aria-label="Formulário de interesse" action="https://formsubmit.co" method="POST">
+            <input type="hidden" name="_subject" value="Novo interesse — Instituto Pro Futuro" />
+            <label for="nome">Nome completo</label>
+            <input id="nome" name="nome" type="text" placeholder="Seu nome" required />
+
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" placeholder="voce@email.com" required />
+
+            <label for="telefone">Telefone (WhatsApp)</label>
+            <input id="telefone" name="telefone" type="tel" placeholder="(11) 90000-0000" />
+
+            <label for="interesse">Qual curso você tem interesse?</label>
+            <select id="interesse" name="interesse" required>
+              <option value="">Selecione…</option>
+              <option>Pacote Office Essencial</option>
+              <option>Excel para Negócios</option>
+              <option>Informática Profissional</option>
+              <option>Assistente Administrativo</option>
+              <option>Gestão Empresarial</option>
+              <option>Atendimento e Vendas</option>
+            </select>
+
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte-nos seu objetivo"></textarea>
+
+            <button class="btn primary" type="submit">Quero receber propostas</button>
+            <p class="legal">Ao enviar, você concorda com nossa política de privacidade. Não fazemos spam.</p>
+          </form>
+          <div>
+            <div class="pill">Atendimento de segunda a sábado</div>
+            <h3 style="margin:10px 0 8px">Como funciona</h3>
+            <p style="color: var(--muted)">Após o envio, um de nossos consultores entrará em contato para entender seu objetivo e indicar a melhor trilha de estudos, valores e condições especiais.</p>
+            <ul style="margin:10px 0 0; padding-left:18px; color: var(--muted)">
+              <li>Diagnóstico gratuito de carreira</li>
+              <li>Turmas próximas a você ou online ao vivo</li>
+              <li>Materiais e certificação inclusos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container foot">
+        <div>
+          <b>Instituto Pro Futuro</b>
+          <div style="margin-top:6px; color: var(--muted)">© <span id="ano"></span> Todos os direitos reservados.</div>
+        </div>
+        <div class="social">
+          <span class="chip">Instagram</span>
+          <span class="chip">Facebook</span>
+          <span class="chip">LinkedIn</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Atualiza ano automaticamente
+      document.getElementById('ano').textContent = new Date().getFullYear();
+    </script>
+  </body>
+  </html>
+
